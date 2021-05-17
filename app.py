@@ -43,7 +43,7 @@ def supervisors():
 
         # Create list of supervisors tuples while filtering integer juristictions
         supervisors = [(super['jurisdiction'], super['lastName'], super['firstName']) 
-                    for super in jdata if not is_integer(super['jurisdiction'])]
+                    for super in jdata if 'jurisdiction' in super and 'lastName' in super and 'firstName' in super and not is_integer(super['jurisdiction'])]
         
         # Sort
         sorted_supervisors = sorted(supervisors, key = lambda x: (x[0], x[2], x[1]))
